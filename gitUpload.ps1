@@ -23,13 +23,18 @@ git add README.md
 
 git add .
 
+git config --global user.email "meenaatchi141996@gmail.com"
+git config --global user.name "Meenaatchi K N"
+
 git commit -m "first commit"
 
 git branch -M master
 
-git remote add origin https://github.com/meenaatchi/DjangoQuizProject.git
+git remote add origin https://github.com/meenaatchi/dynamicWebLoader.git
 
-git push -u origin master
+$git_Result = git push -u origin master
+
+$git_Result
 
 
 

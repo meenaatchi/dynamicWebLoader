@@ -1,9 +1,9 @@
 import React from 'react';
 import {motion} from 'framer-motion'
 
-export default function DropDownComp({attr}) {
+export default function DropDownComp({attr, toggle}) {
     return (
-        <motion.div drag={true} dragMomentum={false} key={Math.random().toString()} className = 'drop-down container'>
+        <motion.div drag={toggle} dragMomentum={false}   className = 'drop-down container'>
             <label className = 'label'>Select: </label>
             <div className = 'rhs'>
             <select id="dropdownbox" name="asd"> 

@@ -1,15 +1,17 @@
+// To push the source code to git repository run  
+
 import React, {useState} from 'react';
 import './App.css';
 import Header from './component/Header';
 import Footer from './component/Footer';
 import Form from './component/Form';
-import {Route, Switch} from 'react-router-dom';
-import Builder from './component/Builder';
+import {Redirect, Route, Switch} from 'react-router-dom';
+import Builder from './component/Builder'; 
 
 
-function App() {
-
-  const [datas, setDatas] = useState({});
+function App() { 
+  const [datas, setDatas] = useState();
+  console.log (datas);
 
   return (
     <div className="App">
@@ -19,7 +21,7 @@ function App() {
           <Form datas = {datas} setDatas = {setDatas}/>
         </Route>
         <Route path = '/builder' exact>
-          <Builder d = {datas}/>
+          {datas == undefined ? (<Redirect to ='/'/>):(<Builder d = {datas}/>)}
         </Route> 
       </Switch>
       <Footer />

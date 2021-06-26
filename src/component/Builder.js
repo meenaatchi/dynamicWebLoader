@@ -1,47 +1,53 @@
-import React, { useState } from 'react';
+import React, {  useState } from 'react';
 import './css/builder.css'
-import {motion} from 'framer-motion';
+import {motion} from 'framer-motion'; //for drag the UI component in the form.
 import TextAreaComp from './form_components/TextAreaComp';
 import TextPswdComp from './form_components/TextPswdComp';
 import DropDownComp from './form_components/DropDownComp';
-import CheckRadioComp from './form_components/CheckRadioComp';
- 
+import CheckRadioComp from './form_components/CheckRadioComp'; 
+
 export default function Builder({d}) { 
-    let datas = JSON.parse(d); 
-    let formType = datas["ActionDisplayName"];
-    let attributes = datas["Attributes"]; 
-    const [toggle, setToggle] = useState(false);
      
+    let allData = JSON.parse(d); //passing input json and storing it in allData Variable.
+    let formType = allData["ActionDisplayName"]; //storing form type for different json file.
+    let attributes = allData["Attributes"]; //attributes variable contains all the UI element details.
+    const [toggle, setToggle] = useState(false); //Customize UI by toggling.
+    
+
+
 
     return (
+        
         <div className = 'containers'>
             <div className = {toggle ? 'active toggle' : 'toggle'} onClick = {() => setToggle(!toggle)}>customize</div>
             <div className = 'form'>
             {
-            attributes.map((attr) => {
+            attributes.map((attr) => {    //Mapping all the attributes in json.
 
-                if (attr["Type"].includes("textarea")) { 
+//Finding all the attributes according to their types.
+
+                if (attr["Type"].includes("textarea")) {  
                     return ( 
-                        <TextAreaComp attr = {attr} toggle = {toggle}/>
+                        <TextAreaComp attr = {attr} toggle = {toggle} key={Math.random().toString()}/>
                     ) 
                 }
 
 
                 if (attr["Type"].includes("text") || attr["Type"].includes("pass") || attr['Type'].includes('search')) {
                     return (
-                        <TextPswdComp attr = {attr} />
+                        <TextPswdComp attr = {attr}  toggle = {toggle}key={Math.random().toString()} />
                     );
                 }
 
-                if (attr["Type"].includes("drop")) {
+                if (attr["Type"].includes("drop")) { 
                     return (
-                        <DropDownComp attr = {attr} />
+                        <DropDownComp attr = {attr} toggle = {toggle} key={Math.random().toString()}/>
                     );
                 }
 
                 if (attr["Type"].includes("check") || attr["Type"].includes("radio")) {  
                     return (
-                        <CheckRadioComp attr = {attr} />
+                        <CheckRadioComp attr = {attr} toggle = {toggle} key={Math.random().toString()}/>
                     );
                 }
 
@@ -51,10 +57,7 @@ export default function Builder({d}) {
             <motion.div drag = {true} dragMomentum = {false} className = 'button'> {formType} </motion.div> 
             </div>
         </div>
+        
     )
 }
 
-{/* <div key={Math.random().toString()} >
-                        <label htmlFor = {radio.Value}>{radio.DisplayValue}</label>
-                        <input type = {attr['Type']} value = {radio.Value} id = {radio.Value}/>
-                       </div> */}
