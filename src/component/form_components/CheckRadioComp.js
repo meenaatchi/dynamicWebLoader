@@ -1,6 +1,6 @@
 import React from 'react';
 import {motion} from 'framer-motion'
-
+ 
 export default function DropDownComp({attr,toggle }) {
     return (
         <motion.div drag={toggle} dragMomentum={false}  className = "radio-check-container container">

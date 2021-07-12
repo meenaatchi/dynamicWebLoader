@@ -1,4 +1,4 @@
-import React from 'react';
+import React from 'react'; 
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App'; 
@@ -11,7 +11,7 @@ ReactDOM.render(
     <App />
     </Router>
   </React.StrictMode>,
-  document.getElementById('root')
+  document.getElementById('root') //App Should be rendered in root
 );
 
 

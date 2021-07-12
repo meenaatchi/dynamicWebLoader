@@ -10,7 +10,7 @@ export default function TextAreaComp({attr, toggle, }) {
        <motion.div drag = {toggle} dragMomentum = {false} className = 'text-area container' >
             <label className = 'label'>Address: </label>
             <div className = 'rhs'>
-            <textarea className = 'txa'  placeholder = 'Type your address here...' key={Math.random().toString()} rows = {attr['Row']} cols = {attr['Column']}></textarea> 
+            <textarea className = 'txa'  placeholder = 'Type your address here...' rows = {attr['Row']} cols = {attr['Column']}></textarea> 
             </div>
         </motion.div> 
     )

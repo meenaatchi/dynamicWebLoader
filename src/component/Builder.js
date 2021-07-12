@@ -12,16 +12,21 @@ export default function Builder({d}) {
     let formType = allData["ActionDisplayName"]; //storing form type for different json file.
     let attributes = allData["Attributes"]; //attributes variable contains all the UI element details.
     const [toggle, setToggle] = useState(false); //Customize UI by toggling.
-    
-
+     
 
 
     return (
         
-        <div className = 'containers'>
-            <div className = {toggle ? 'active toggle' : 'toggle'} onClick = {() => setToggle(!toggle)}>customize</div>
+        <div className = 'containers'> 
+            <div className = {toggle ? 'active toggle' : 'toggle'} onClick = {() => {
+                if(!toggle) alert('Click Customize to drag the components')
+                setToggle(!toggle); 
+
+            }
+            }>customize</div>
+         
             <div className = 'form'>
-            {
+            { //All Js code should written inside curly brackets in JSX
             attributes.map((attr) => {    //Mapping all the attributes in json.
 
 //Finding all the attributes according to their types.
@@ -33,7 +38,7 @@ export default function Builder({d}) {
                 }
 
 
-                if (attr["Type"].includes("text") || attr["Type"].includes("pass") || attr['Type'].includes('search')) {
+                if (attr["Type"].includes("text") || attr['Type'].includes('time') || attr['Type'].includes('date') || attr["Type"].includes("pass") || attr['Type'].includes('search') || attr['Type'].includes('number')) {
                     return (
                         <TextPswdComp attr = {attr}  toggle = {toggle}key={Math.random().toString()} />
                     );

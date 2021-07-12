@@ -3,9 +3,11 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import './css/form.css'; 
 import {useHistory} from 'react-router-dom';
 
-export default function Form({datas, setDatas}) {
+export default function Form(props) {
 
-  const urlbar = useHistory();
+  const {setDatas, datas} = props;
+
+  const urlbar = useHistory(); 
 
   const [filename, setFilename] = useState(''); //file Name stored in this variable.
   const [fileContent, setFileContent] = useState('');  //File Content and Text area Value stored in this variable.
@@ -13,6 +15,7 @@ export default function Form({datas, setDatas}) {
   
 
   const handleFileChange = e => {  //onchange event which validate json file and updates the file content.
+    
     let file = e.target.files; 
     
     const reader = new FileReader();
@@ -61,7 +64,7 @@ export default function Form({datas, setDatas}) {
               <div className="col"><button className="btn btn-primary" id="clearBtnId" onClick={onClick}>Clear</button></div>
             </div>
  
-            <textarea onChange = {(e) => {
+            <textarea onChange = {(e) => { // reflect changes in the textarea after uploading file.
               setFileContent(e.target.value);
             }} className="form-control" placeholder="Enter your input Json File............" defaultValue= {fileContent}></textarea>
 

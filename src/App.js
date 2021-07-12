@@ -1,4 +1,5 @@
-// To push the source code to git repository run  
+// To push the source code to git repository run $git_Result in gitUpload.ps1 
+// select $git_Result variable in gitUpload.ps1 and run.
 
 import React, {useState} from 'react';
 import './App.css';
@@ -10,12 +11,13 @@ import Builder from './component/Builder';
 
 
 function App() { 
-  const [datas, setDatas] = useState();
+  const [datas, setDatas] = useState();//state declaration 
   console.log (datas);
 
   return (
     <div className="App">
       <Header /> 
+      
       <Switch>
         <Route path = '/' exact>
           <Form datas = {datas} setDatas = {setDatas}/>
@@ -24,6 +26,7 @@ function App() {
           {datas == undefined ? (<Redirect to ='/'/>):(<Builder d = {datas}/>)}
         </Route> 
       </Switch>
+      
       <Footer />
     </div>
   );
